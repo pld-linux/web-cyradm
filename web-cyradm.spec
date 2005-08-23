@@ -7,8 +7,8 @@
 %define		version_major	0.5.4
 %define		version_minor	1
 #
-Summary:	Cyrus-IMAP based mail accounts managment system.
-Summary(pl):	System zarz±dzania kontami pocztowymi oparty o Cyrus-IMAP.
+Summary:	Cyrus-IMAP based mail accounts managment system
+Summary(pl):	System zarz±dzania kontami pocztowymi oparty o Cyrus-IMAP
 Name:		web-cyradm
 Version:	%{version_major}.%{version_minor}
 Release:	0.1
@@ -20,9 +20,9 @@ Patch0:		%{name}-locale.patch
 # Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 URL:		http://www.web-cyradm.org/
 Requires:	mysql
-Requires:	webserver
 Requires:	php
 Requires:	php-gettext
+Requires:	webserver
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,25 +43,28 @@ Features:
    and superusers
  - Sieve functions like forwarding single e-mail adresses
    and out-of-office replies
- - Enable/Disable different services like imap, pop, sieve and stmp
+ - Enable/Disable different services like imap, pop, sieve and smtp
    for particular users
  - Support for MySQL and PostgreSQL databases
  - Storing passwords in crypt, md5 or MySQL passwd compatible format
 
 %description -l pl
-Web-cyradm jest oprogramowaniem które skleja wiele technologii Open
+Web-cyradm jest oprogramowaniem sklejaj±cym wiele technologii Open
 Source w jeden du¿y system pocztowy.
 
 Mo¿liwo¶ci:
- - Administracja wieloma wirtualnymu domenami
- - Zarz±dzanie kontami urzytkowników
- - Mapowanie kont urzytkowników na adresy e-mail
+ - Administrowanie wieloma wirtualnymi domenami
+ - Zarz±dzanie kontami u¿ytkowników
+ - Mapowanie kont u¿ytkowników na adresy e-mail
  - Tworzenie, usuwanie i zmiana nazwy skrzynek pocztwowych
+ - Ustawianie limitów dla u¿ytkowników i domen
  - Delegacja zadañ do administratorów domen
  - Resetowanie hase³ u¿ytkownikom przez administratorów domen
- - Filtry poczty Sieve
- - W³±czanie i wy³±czanie us³ug dla poszczególnych urzytkowników
- - Wsparcie dla MySQL'a i PostgreSQL'a
+ - Funkcje Sieve, takie jak przekazywanie pojedynczych adresów e-mail
+   czy automatyczne odpowiedzi o nieobecno¶ci
+ - W³±czanie i wy³±czanie us³ug (imap, pop, sieve, smtp) dla
+   poszczególnych u¿ytkowników
+ - Obsluga baz MySQL i PostgreSQL
  - Obs³uga hase³ w formacie MD5, Crypt i MySQL PASSWORD()
 
 %prep
