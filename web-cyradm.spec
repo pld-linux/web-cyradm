@@ -102,22 +102,11 @@ touch $RPM_BUILD_ROOT%{_localstatedir}/log/%{name}/%{name}-login.log
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-if [ -d %{_sysconfdir}/httpd/httpd.conf ]; then
-	ln -sf %{_sysconfdir}/httpd/%{name}.conf %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
+%triggerin -- apache >= 2.0.0
+%apache_config_install -v 2 -c %{_sysconfdir}/httpd/%{name}.conf
 
-	%service -q httpd reload
-fi
-
-%preun
-if [ "$1" = "0" ]; then
-	umask 027
-	if [ -d %{_sysconfdir}/httpd/httpd.conf ]; then
-		rm -f %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
-
-		%service -q httpd reload
-	fi
-fi
+%triggerun -- apache >= 2.0.0
+%apache_config_uninstall -v 2
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
