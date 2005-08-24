@@ -1,8 +1,6 @@
 #
 # TODO:
 #	- R: & BR:
-#	- better /etc/httpd/web-cyradm.conf
-#	- many more
 #
 %define		version_major	0.5.4
 %define		version_minor	1
@@ -16,13 +14,14 @@ Epoch:		0
 License:	GPL
 Group:		Applications
 Source0:	http://www.web-cyradm.org/%{name}-%{version_major}-%{version_minor}.tar.gz
+Source1:	%{name}-apache.conf
 Patch0:		%{name}-locale.patch
 # Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 URL:		http://www.web-cyradm.org/
-Requires:	mysql
+Requires:	apache
 Requires:	php
 Requires:	php-gettext
-Requires:	webserver
+Requires:	php-pear-DB
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -78,8 +77,10 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/{%{name},httpd}
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{css,images,lib}
 install -d $RPM_BUILD_ROOT%{_localstatedir}/log/%{name}
 
-install	config/*	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}
-echo "Alias /%{name} %{_datadir}/%{name}" > $RPM_BUILD_ROOT%{_sysconfdir}/httpd/%{name}.conf
+install	config/conf.php.dist	\
+	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.php
+
+install	%{SOURCE1}	$RPM_BUILD_ROOT%{_sysconfdir}/httpd/%{name}.conf
 
 install	*.php		$RPM_BUILD_ROOT%{_datadir}/%{name}
 install	css/*		$RPM_BUILD_ROOT%{_datadir}/%{name}/css
@@ -93,6 +94,8 @@ for i in locale/?? locale/??_??; do
     install $i/LC_MESSAGES/*.mo $RPM_BUILD_ROOT%{_datadir}/$i/LC_MESSAGES
 done
 
+touch $RPM_BUILD_ROOT%{_localstatedir}/log/%{name}/%{name}-login.log
+
 %find_lang %{name}
 
 %clean
@@ -103,7 +106,7 @@ if [ -d %{_sysconfdir}/httpd/httpd.conf ]; then
 	ln -sf %{_sysconfdir}/httpd/%{name}.conf %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
 
 	if [ -f /var/lock/subsys/httpd ]; then
-		%service httpd restart
+		%service -q httpd restart
 	fi
 fi
 
@@ -114,7 +117,7 @@ if [ "$1" = "0" ]; then
 		rm -f %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
 
 		if [ -f /var/lock/subsys/httpd ]; then
-		    %service httpd restart
+		    %service -q httpd restart
 		fi
 	fi
 fi
@@ -125,4 +128,5 @@ fi
 %dir %{_sysconfdir}/%{name}
 %attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
 %attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd/%{name}.conf
+%ghost %{_localstatedir}/log/%{name}/*.log
 %{_datadir}/%{name}
