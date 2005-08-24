@@ -1,13 +1,13 @@
 diff -ur web-cyradm-0.5.4-1.orig/index.php web-cyradm-0.5.4-1/index.php
 --- web-cyradm-0.5.4-1.orig/index.php	2004-03-15 23:53:02.000000000 +0100
 +++ web-cyradm-0.5.4-1/index.php	2005-08-23 14:55:24.000000000 +0200
-@@ -70,9 +70,6 @@
+@@ -70,8 +70,8 @@
  	putenv("LANG=" . $LANG);
  	putenv("LANGUAGE=" . $LANG);
  
--	// Specify location of translation tables
+	// Specify location of translation tables
 -	bindtextdomain("web-cyradm", "./locale");
--
++	bindtextdomain("web-cyradm", "/usr/share/locale");
+ 
  	// Choose domain
  	textdomain("web-cyradm");
- 	require_once WC_BASE . "/session.php";
