@@ -19,7 +19,7 @@ Patch0:		%{name}-locale.patch
 # Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 URL:		http://www.web-cyradm.org/
 BuildRequires:	rpmbuild(macros) >= 1.228
-Requires:	apache
+Requires:	apache >= 2.0
 Requires:	php
 Requires:	php-gettext
 Requires:	php-pear-DB
