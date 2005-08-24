@@ -18,6 +18,7 @@ Source1:	%{name}-apache.conf
 Patch0:		%{name}-locale.patch
 # Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 URL:		http://www.web-cyradm.org/
+BuildRequires:	rpmbuild(macros) >= 1.228
 Requires:	apache
 Requires:	php
 Requires:	php-gettext
@@ -105,9 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 if [ -d %{_sysconfdir}/httpd/httpd.conf ]; then
 	ln -sf %{_sysconfdir}/httpd/%{name}.conf %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
 
-	if [ -f /var/lock/subsys/httpd ]; then
-		%service -q httpd restart
-	fi
+	%service -q httpd reload
 fi
 
 %preun
@@ -116,9 +115,7 @@ if [ "$1" = "0" ]; then
 	if [ -d %{_sysconfdir}/httpd/httpd.conf ]; then
 		rm -f %{_sysconfdir}/httpd/httpd.conf/99_%{name}.conf
 
-		if [ -f /var/lock/subsys/httpd ]; then
-		    %service -q httpd restart
-		fi
+		%service -q httpd reload
 	fi
 fi
 
