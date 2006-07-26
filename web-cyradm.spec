@@ -1,6 +1,6 @@
-#
 # TODO:
-#	- R: & BR:
+# - webapps
+# - R: & BR:
 #
 %define		version_major	0.5.4
 %define		version_minor	1
@@ -39,12 +39,12 @@ Features:
  - Create, delete and rename cyrus-imap mailboxes
  - Setting of quotas for users and domains
  - Delegation of some tasks to domain adminstrators
- - Resetting password for accountusers by its domainadmins
-   and superusers
- - Sieve functions like forwarding single e-mail adresses
-   and out-of-office replies
- - Enable/Disable different services like imap, pop, sieve and smtp
-   for particular users
+ - Resetting password for accountusers by its domainadmins and
+   superusers
+ - Sieve functions like forwarding single e-mail adresses and
+   out-of-office replies
+ - Enable/Disable different services like imap, pop, sieve and smtp for
+   particular users
  - Support for MySQL and PostgreSQL databases
  - Storing passwords in crypt, md5 or MySQL passwd compatible format
 
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog COPYRIGHT INSTALL README README.translations TO-BE-DONE migrate.php-dist doc/* scripts
 %dir %{_sysconfdir}/%{name}
-%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
-%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd/%{name}.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd/%{name}.conf
 %ghost %{_localstatedir}/log/%{name}/*.log
 %{_datadir}/%{name}
