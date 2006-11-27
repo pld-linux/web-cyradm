@@ -20,9 +20,9 @@ Patch0:		%{name}-locale.patch
 URL:		http://www.web-cyradm.org/
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires:	apache >= 2.0
-Requires:	php
-Requires:	php-gettext
+Requires:	php(gettext)
 Requires:	php-pear-DB
+Requires:	webserver(php)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
