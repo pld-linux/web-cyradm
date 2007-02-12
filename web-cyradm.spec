@@ -6,7 +6,7 @@
 %define		version_minor	1
 #
 Summary:	Cyrus-IMAP based mail accounts managment system
-Summary(pl):	System zarz±dzania kontami pocztowymi oparty o Cyrus-IMAP
+Summary(pl.UTF-8):   System zarzƒÖdzania kontami pocztowymi oparty o Cyrus-IMAP
 Name:		web-cyradm
 Version:	%{version_major}.%{version_minor}
 Release:	0.1
@@ -48,24 +48,24 @@ Features:
  - Support for MySQL and PostgreSQL databases
  - Storing passwords in crypt, md5 or MySQL passwd compatible format
 
-%description -l pl
-Web-cyradm jest oprogramowaniem sklejaj±cym wiele technologii Open
-Source w jeden duøy system pocztowy.
+%description -l pl.UTF-8
+Web-cyradm jest oprogramowaniem sklejajƒÖcym wiele technologii Open
+Source w jeden du≈ºy system pocztowy.
 
-Moøliwo∂ci:
+Mo≈ºliwo≈õci:
  - Administrowanie wieloma wirtualnymi domenami
- - Zarz±dzanie kontami uøytkownikÛw
- - Mapowanie kont uøytkownikÛw na adresy e-mail
+ - ZarzƒÖdzanie kontami u≈ºytkownik√≥w
+ - Mapowanie kont u≈ºytkownik√≥w na adresy e-mail
  - Tworzenie, usuwanie i zmiana nazwy skrzynek pocztwowych
- - Ustawianie limitÛw dla uøytkownikÛw i domen
- - Delegacja zadaÒ do administratorÛw domen
- - Resetowanie hase≥ uøytkownikom przez administratorÛw domen
- - Funkcje Sieve, takie jak przekazywanie pojedynczych adresÛw e-mail
-   czy automatyczne odpowiedzi o nieobecno∂ci
- - W≥±czanie i wy≥±czanie us≥ug (imap, pop, sieve, smtp) dla
-   poszczegÛlnych uøytkownikÛw
+ - Ustawianie limit√≥w dla u≈ºytkownik√≥w i domen
+ - Delegacja zada≈Ñ do administrator√≥w domen
+ - Resetowanie hase≈Ç u≈ºytkownikom przez administrator√≥w domen
+ - Funkcje Sieve, takie jak przekazywanie pojedynczych adres√≥w e-mail
+   czy automatyczne odpowiedzi o nieobecno≈õci
+ - W≈ÇƒÖczanie i wy≈ÇƒÖczanie us≈Çug (imap, pop, sieve, smtp) dla
+   poszczeg√≥lnych u≈ºytkownik√≥w
  - Obsluga baz MySQL i PostgreSQL
- - Obs≥uga hase≥ w formacie MD5, Crypt i MySQL PASSWORD()
+ - Obs≈Çuga hase≈Ç w formacie MD5, Crypt i MySQL PASSWORD()
 
 %prep
 %setup -q -n %{name}-%{version_major}-%{version_minor}
