@@ -6,7 +6,7 @@
 %define		version_minor	1
 #
 Summary:	Cyrus-IMAP based mail accounts managment system
-Summary(pl.UTF-8):   System zarządzania kontami pocztowymi oparty o Cyrus-IMAP
+Summary(pl.UTF-8):	System zarządzania kontami pocztowymi oparty o Cyrus-IMAP
 Name:		web-cyradm
 Version:	%{version_major}.%{version_minor}
 Release:	0.1
