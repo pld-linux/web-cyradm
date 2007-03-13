@@ -14,9 +14,9 @@ Epoch:		0
 License:	GPL
 Group:		Applications
 Source0:	http://www.web-cyradm.org/%{name}-%{version_major}-%{version_minor}.tar.gz
+# Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 Source1:	%{name}-apache.conf
 Patch0:		%{name}-locale.patch
-# Source0-md5:	d06dc16899680c29b94a5460709b5fe0
 URL:		http://www.web-cyradm.org/
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires:	apache >= 2.0
