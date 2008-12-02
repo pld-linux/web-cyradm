@@ -19,6 +19,7 @@ Source1:	%{name}-apache.conf
 Patch0:		%{name}-locale.patch
 URL:		http://www.web-cyradm.org/
 BuildRequires:	rpmbuild(macros) >= 1.228
+BuildRequires:	migrate-to-webapps
 Requires:	apache >= 2.0
 Requires:	php(gettext)
 Requires:	php-pear-DB
