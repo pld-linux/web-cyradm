@@ -70,7 +70,7 @@ Możliwości:
 
 %prep
 %setup -q -n %{name}-%{version_major}-%{version_minor}
-%patch0 -p1
+%patch -P0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
